@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 class ScoreViewModel : ViewModel() {
 
     var scoreOne = 0
-
     var scoreTwo = 0
 
     fun addScoreOne() {

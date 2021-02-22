@@ -3,11 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/scoreFragment">
+    app:startDestination="@id/teamFragment">
 
     <fragment
         android:id="@+id/scoreFragment"
         android:name="com.example.scoretracker.ScoreFragment"
         android:label="fragment_score"
         tools:layout="@layout/fragment_score" />
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.example.scoretracker.TeamFragment"
+        android:label="fragment_team"
+        tools:layout="@layout/fragment_team" >
+        <action
+            android:id="@+id/action_teamFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+    </fragment>
 </navigation>

@@ -9,32 +9,42 @@ import com.example.scoretracker.databinding.FragmentScoreBinding
 
 class ScoreFragment : Fragment(R.layout.fragment_score) {
 
-    private lateinit var viewModel: ScoreViewModel
+    private lateinit var viewModelScore: ScoreViewModel
+
+    var nameOne: String? = ""
+    var nameTwo: String? = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(ScoreViewModel::class.java)
+        viewModelScore = ViewModelProvider(this).get(ScoreViewModel::class.java)
 
         val binding = FragmentScoreBinding.bind(view)
 
+        // Declaring the arguments passed over
+        nameOne = arguments?.getString("nameOne")
+        binding.teamOne.text = nameOne
+
+        nameTwo = arguments?.getString("nameTwo")
+        binding.teamTwo.text = nameTwo
+
         // Onclick for button one
         binding.btnAddOne.setOnClickListener {
-            viewModel.addScoreOne()
-            binding.txtScoreOne.text = viewModel.scoreOne.toString()
+            viewModelScore.addScoreOne()
+            binding.txtScoreOne.text = viewModelScore.scoreOne.toString()
         }
 
         // Onclick for button two
         binding.btnAddTwo.setOnClickListener {
-            viewModel.addScoreTwo()
-            binding.txtScoreTwo.text = viewModel.scoreTwo.toString()
+            viewModelScore.addScoreTwo()
+            binding.txtScoreTwo.text = viewModelScore.scoreTwo.toString()
         }
 
         // Onclick reset score
         binding.btnReset.setOnClickListener {
-            viewModel.resetScore()
-            binding.txtScoreOne.text = viewModel.scoreOne.toString()
-            binding.txtScoreTwo.text = viewModel.scoreTwo.toString()
+            viewModelScore.resetScore()
+            binding.txtScoreOne.text = viewModelScore.scoreOne.toString()
+            binding.txtScoreTwo.text = viewModelScore.scoreTwo.toString()
         }
     }
 }
